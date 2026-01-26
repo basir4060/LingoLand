@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Gamepad2, Star, Trophy, Sparkles, Flame, Target, Zap, Crown } from 'lucide-react';
+import { Calendar, Gamepad2, Star, Sparkles, Flame, Target, Zap, Crown } from 'lucide-react';
 import TigerDisplay from './TigerDisplay';
 
 const Dashboard: React.FC = () => {

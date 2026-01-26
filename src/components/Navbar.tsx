@@ -5,15 +5,26 @@ import { Sparkles, Map, User, Home } from 'lucide-react';
 interface NavbarProps {
     onStart: () => void;
     onHome: () => void;
+    onLogout: () => void;
+    onProfile: () => void;
+    onAdventures: () => void;
+    session: any;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onStart, onHome }) => {
+const Navbar: React.FC<NavbarProps> = ({ onStart, onHome, onProfile, onAdventures, session }) => {
 
     const navItems = [
-        { name: 'Home', icon: Home, color: 'text-blue-500' },
-        { name: 'Adventures', icon: Map, color: 'text-green-500' },
-        { name: 'Profile', icon: User, color: 'text-purple-500' },
+        { name: 'Home', icon: Home, color: 'text-blue-500', action: onHome },
+        { name: 'Adventures', icon: Map, color: 'text-green-500', action: onAdventures },
+        { name: 'Profile', icon: User, color: 'text-purple-500', action: onProfile },
     ];
+
+    /* 
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+        // The App component will detect the SIGNED_OUT event and switch views
+    };
+    */
 
     return (
         <motion.nav
@@ -38,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ onStart, onHome }) => {
                     {navItems.map((item) => (
                         <button
                             key={item.name}
-                            onClick={item.name === 'Home' ? onHome : undefined}
+                            onClick={item.action}
                             className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-gray-100 transition-colors font-bold text-gray-600 hover:text-gray-900 group"
                         >
                             <item.icon size={20} className={`${item.color} group-hover:scale-110 transition-transform`} />
@@ -54,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({ onStart, onHome }) => {
                     onClick={onStart}
                     className="bg-accent text-white font-heading font-bold text-lg px-6 py-2 rounded-full shadow-[0_4px_0_rgb(217,119,6)] active:shadow-none active:translate-y-1 transition-all"
                 >
-                    Start Adventure
+                    {session ? 'Continue Adventure' : 'Start Adventure'}
                 </motion.button>
 
             </div>

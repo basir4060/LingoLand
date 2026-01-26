@@ -1,42 +1,29 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { BookOpen, Star } from 'lucide-react';
 import PetDisplay from './PetDisplay';
 
 interface HeroProps {
     onStart: () => void;
+    onAdventures: () => void;
+    session: any;
 }
 
-const Hero: React.FC<HeroProps> = ({ onStart }) => {
-    const [showToast, setShowToast] = React.useState(false);
+const Hero: React.FC<HeroProps> = ({ onStart, onAdventures, session }) => {
+    // const [showToast, setShowToast] = React.useState(false);
 
     const handleSignUp = () => {
-        setShowToast(true);
-        setTimeout(() => setShowToast(false), 3000);
+        if (session) {
+            onAdventures();
+        } else {
+            onStart();
+        }
     };
 
     return (
         <section className="min-h-screen pt-32 pb-20 px-4 relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
 
-            {/* Custom Notification Toast */}
-            <AnimatePresence>
-                {showToast && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -50, x: '-50%' }}
-                        animate={{ opacity: 1, y: 0, x: '-50%' }}
-                        exit={{ opacity: 0, y: -50, x: '-50%' }}
-                        className="fixed top-24 left-1/2 z-50 flex items-center gap-3 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white"
-                    >
-                        <div className="bg-gradient-to-br from-primary to-purple-500 p-2 rounded-xl text-white">
-                            <Star size={20} className="fill-white" />
-                        </div>
-                        <div>
-                            <h4 className="font-heading font-bold text-gray-800">Coming Soon!</h4>
-                            <p className="text-sm text-gray-500 font-medium">We're still building this magic! ✨</p>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {/* Custom Notification Toast - Removed for Auth Flow */}
 
             {/* Background Decor */}
             <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
@@ -72,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({ onStart }) => {
                             onClick={handleSignUp}
                             className="flex items-center justify-center gap-3 bg-secondary text-white font-heading font-bold text-xl px-8 py-4 rounded-2xl shadow-[0_6px_0_rgb(5,150,105)] active:shadow-none active:translate-y-1.5 transition-all"
                         >
-                            Sign Up
+                            {session ? 'Explore other adventures' : 'Sign Up'}
                         </motion.button>
 
                         <button className="flex items-center justify-center gap-2 text-gray-500 font-bold hover:text-primary transition-colors px-6 py-4">
