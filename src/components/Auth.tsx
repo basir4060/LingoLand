@@ -39,9 +39,8 @@ const Auth: React.FC = () => {
                     email,
                     password,
                     options: {
-                        emailRedirectTo: 'https://basir4060.github.io/LingoLand',
+                        emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}`,
                         data: {
-                            full_name: `${firstName} ${lastName}`,
                             first_name: firstName,
                             last_name: lastName,
                             primary_language: language,

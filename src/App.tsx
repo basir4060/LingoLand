@@ -8,9 +8,10 @@ import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import Adventures from './components/Adventures';
+import MiniGamesHub from './components/minigames/MiniGamesHub';
 
 function App() {
-  const [view, setView] = useState<'landing' | 'dashboard' | 'auth' | 'profile' | 'adventures'>('landing');
+  const [view, setView] = useState<'landing' | 'dashboard' | 'auth' | 'profile' | 'adventures' | 'minigames'>('landing');
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
@@ -27,13 +28,12 @@ function App() {
         setSession(null);
       } else if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') {
         setSession(session);
-        // If it's an explicit sign-in event, go to profile
+        // Redirect to dashboard if we have a session (unless explicitly signing in which goes to profile)
         if (event === 'SIGNED_IN') {
           setView('profile');
+        } else if (event === 'INITIAL_SESSION' && session) {
+          setView('dashboard');
         }
-        // For initial session check (page reload), we might want to stay on dashboard or landing? 
-        // But for now, if we have a session and are just loading, let's default to dashboard if not already set?
-        // Actually, let's simply rely on the 'SIGNED_IN' event for the redirect.
       } else if (session) {
         setSession(session);
       }
@@ -75,14 +75,16 @@ function App() {
 
   return (
     <div className="appContainer">
-      <Navbar
-        onStart={handleStart}
-        onHome={handleHome}
-        onLogout={handleLogout}
-        onProfile={handleProfile}
-        onAdventures={handleAdventures}
-        session={session}
-      />
+      {view !== 'auth' && (
+        <Navbar
+          onStart={handleStart}
+          onHome={handleHome}
+          onProfile={handleProfile}
+          onAdventures={handleAdventures}
+          onLogout={handleLogout}
+          session={session}
+        />
+      )}
       <main>
         {view === 'landing' ? (
           <>
@@ -98,8 +100,10 @@ function App() {
           <Profile session={session} onLogout={handleLogout} />
         ) : view === 'adventures' ? (
           <Adventures onStart={handleStart} />
+        ) : view === 'minigames' ? (
+          <MiniGamesHub onBack={() => setView('dashboard')} />
         ) : (
-          <Dashboard />
+          <Dashboard onMinigames={() => setView('minigames')} />
         )}
       </main>
     </div>

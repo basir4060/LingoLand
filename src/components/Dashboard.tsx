@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 import { Calendar, Gamepad2, Star, Sparkles, Flame, Target, Zap, Crown } from 'lucide-react';
 import TigerDisplay from './TigerDisplay';
 
-const Dashboard: React.FC = () => {
+interface DashboardProps {
+    onMinigames: () => void;
+}
+
+const Dashboard: React.FC<DashboardProps> = ({ onMinigames }) => {
     return (
         <div className="min-h-screen pt-36 pb-12 px-4 bg-[#F0F4F8] relative overflow-hidden font-body">
 
@@ -55,6 +59,7 @@ const Dashboard: React.FC = () => {
                             </motion.button>
 
                             <motion.button
+                                onClick={onMinigames}
                                 whileHover={{ scale: 1.02, y: -4 }}
                                 whileTap={{ scale: 0.98 }}
                                 className="relative overflow-hidden bg-gradient-to-br from-[#FF7675] to-[#FAB1A0] rounded-[2rem] p-6 text-white text-left shadow-lg shadow-pink-200 group flex-1"
