@@ -10,7 +10,8 @@ interface ProfileProps {
 
 interface ProfileData {
     username: string;
-    full_name: string;
+    first_name: string;
+    last_name: string;
     avatar_url: string;
     primary_language: string;
     created_at: string;
@@ -52,7 +53,7 @@ const Profile: React.FC<ProfileProps> = ({ session, onLogout }) => {
             // Fetch Profile
             const { data: profileData } = await supabase
                 .from('profiles')
-                .select('username, full_name, avatar_url, primary_language, created_at')
+                .select('username, first_name, last_name, avatar_url, primary_language, created_at')
                 .eq('id', user.id)
                 .single();
 
@@ -119,7 +120,7 @@ const Profile: React.FC<ProfileProps> = ({ session, onLogout }) => {
                             </div>
 
                             <h1 className="font-heading font-black text-2xl text-gray-800 leading-tight">
-                                {profile?.full_name || profile?.username || 'Explorer'}
+                                {profile ? `${profile.first_name} ${profile.last_name}` : 'Explorer'}
                             </h1>
                             <p className="text-gray-400 font-bold text-sm mb-6">@{profile?.username}</p>
 
