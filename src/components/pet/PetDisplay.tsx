@@ -28,8 +28,7 @@ const variants = {
 };
 
 const PetDisplay: React.FC = () => {
-    // Dynamically import all JSON files
-    const lottieFiles = import.meta.glob('../assets/lottie/*.json', { eager: true });
+    const lottieFiles = import.meta.glob('../../assets/lottie/*.json', { eager: true });
 
     const [pets, setPets] = useState<any[]>([]);
     const [[page, direction], setPage] = useState([0, 0]);
@@ -43,21 +42,17 @@ const PetDisplay: React.FC = () => {
         setPets(loadedPets);
     }, []);
 
-    // Calculate index safely
     const imageIndex = pets.length > 0 ? wrap(0, pets.length, page) : 0;
 
     const paginate = (newDirection: number) => {
         setPage([page + newDirection, newDirection]);
     };
 
-    // Auto-rotate every 5 seconds
     useEffect(() => {
         if (pets.length === 0) return;
-
         const timer = setInterval(() => {
             paginate(1);
-        }, 5000); // 5 seconds constant timing
-
+        }, 5000);
         return () => clearInterval(timer);
     }, [page, pets.length]);
 
@@ -72,9 +67,7 @@ const PetDisplay: React.FC = () => {
 
     return (
         <div className="w-full h-full relative flex items-center justify-center">
-            {/* Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-white/40 rounded-full blur-3xl -z-10"></div>
-
             <div className="relative w-full h-full flex items-center justify-center overflow-visible">
                 <AnimatePresence initial={false} custom={direction} mode="popLayout">
                     <motion.div
@@ -90,16 +83,12 @@ const PetDisplay: React.FC = () => {
                         }}
                         className="absolute w-full h-full flex flex-col items-center justify-center"
                     >
-                        {/* Removed padding to maximize size. Added scale-125 to force them even larger if needed. */}
                         <div className="w-full h-full flex items-center justify-center scale-125">
                             <Lottie
                                 animationData={pets[imageIndex].data}
                                 loop={true}
                                 className="w-full h-full"
-                                style={{
-                                    maxWidth: 'none',
-                                    maxHeight: 'none',
-                                }}
+                                style={{ maxWidth: 'none', maxHeight: 'none' }}
                             />
                         </div>
                     </motion.div>
