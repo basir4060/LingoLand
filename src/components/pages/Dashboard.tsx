@@ -4,10 +4,30 @@ import { Calendar, Gamepad2, Star, Sparkles, Flame, Target, Zap, Crown } from 'l
 import TigerDisplay from './TigerDisplay';
 
 interface DashboardProps {
+import { usePet } from '../../context/PetContext';
+
+interface DashboardProps {
     onMinigames: () => void;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ onMinigames }) => {
+    const { mood, message, celebrate, encourage, greet, sleep, wake } = usePet();
+    const [pose, setPose] = useState<'front' | 'meditate'>('front');
+
+    const handleFeed = () => celebrate();
+    const handlePlay = () => encourage();
+    const handlePetClick = () => greet();
+    
+    const handleRest = () => {
+        if (pose === 'meditate') {
+            setPose('front');
+            wake();
+        } else {
+            setPose('meditate');
+            sleep();
+        }
+    };
+
     return (
         <div className="min-h-screen pt-36 pb-12 px-4 bg-[#F0F4F8] relative overflow-hidden font-body">
 
