@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useCallback } from 'react';
+import type { ReactNode } from 'react';
 
 export type PetMood = 'idle' | 'happy' | 'excited' | 'thinking' | 'sleeping' | 'celebrating';
 
@@ -42,7 +43,7 @@ export const PetProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const [mood, setMood] = useState<PetMood>('idle');
     const [message, setMessage] = useState<string | null>(null);
     const [isVisible, setIsVisible] = useState(true);
-    const [messageTimeout, setMessageTimeout] = useState<NodeJS.Timeout | null>(null);
+    const [messageTimeout, setMessageTimeout] = useState<ReturnType<typeof setTimeout> | null>(null);
     const [learningLanguage, setLearningLanguage] = useState<SupportedLanguage>('es');
     const [nativeLanguage, setNativeLanguage] = useState<SupportedLanguage>('en');
 

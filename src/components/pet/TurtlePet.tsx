@@ -31,7 +31,6 @@ const TurtlePet: React.FC<TurtlePetProps> = ({
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [cursorPosition, setCursorPosition] = useState({ x: 0.5, y: 0.5 });
-    const [isHovered, setIsHovered] = useState(false);
     const [currentMessage, setCurrentMessage] = useState<string | null>(null);
 
     const sizeClasses = {
@@ -120,9 +119,7 @@ const TurtlePet: React.FC<TurtlePetProps> = ({
             ref={containerRef}
             className={`relative ${sizeClasses[size]} ${className} flex items-center justify-center`}
             onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => {
-                setIsHovered(false);
                 setCursorPosition({ x: 0.5, y: 0.5 });
             }}
         >
@@ -138,7 +135,7 @@ const TurtlePet: React.FC<TurtlePetProps> = ({
                 onClick={handleClick}
                 className="relative cursor-pointer"
                 animate={moodAnimation.animate}
-                transition={moodAnimation.transition}
+                transition={moodAnimation.transition as any}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 style={{ width: '300px', height: '400px' }}
@@ -147,9 +144,8 @@ const TurtlePet: React.FC<TurtlePetProps> = ({
                 <img
                     src={getImage()}
                     alt="Turtle Pet"
-                    className={`w-full h-full object-contain drop-shadow-2xl ${
-                        pose === 'run-left' ? 'scale-x-[-1]' : ''
-                    }`}
+                    className={`w-full h-full object-contain drop-shadow-2xl ${pose === 'run-left' ? 'scale-x-[-1]' : ''
+                        }`}
                     style={{
                         filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))',
                     }}

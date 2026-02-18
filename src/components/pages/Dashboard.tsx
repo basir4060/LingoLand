@@ -9,7 +9,7 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ onMinigames }) => {
-    const { mood, message, celebrate, encourage, greet, sleep, wake, setMood } = usePet();
+    const { mood, message, celebrate, encourage, greet, sleep, wake } = usePet();
     const [pose, setPose] = useState<'front' | 'meditate'>('front');
 
     const handleFeed = () => celebrate();
