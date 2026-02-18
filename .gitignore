@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 .env
 *.sql
+github-main-branch-test/
+github-feature-pet-branch/

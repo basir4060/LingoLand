@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
+import { PetProvider } from './context/PetContext';
 import { supabase } from './lib/supabase';
-import Auth from './components/Auth';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import LevelPreview from './components/LevelPreview';
-import Footer from './components/Footer';
-import Dashboard from './components/Dashboard';
-import Profile from './components/Profile';
-import Adventures from './components/Adventures';
+import Auth from './components/pages/Auth';
+import Navbar from './components/common/Navbar';
+import Hero from './components/pages/Hero';
+import LevelPreview from './components/pages/LevelPreview';
+import Footer from './components/common/Footer';
+import Dashboard from './components/pages/Dashboard';
+import Profile from './components/pages/Profile';
+import Adventures from './components/pages/Adventures';
 import MiniGamesHub from './components/minigames/MiniGamesHub';
 
 function App() {
@@ -74,39 +75,41 @@ function App() {
   };
 
   return (
-    <div className="appContainer">
-      {view !== 'auth' && (
-        <Navbar
-          onStart={handleStart}
-          onHome={handleHome}
-          onProfile={handleProfile}
-          onAdventures={handleAdventures}
-          onLogout={handleLogout}
-          session={session}
-        />
-      )}
-      <main>
-        {view === 'landing' ? (
-          <>
-            <Hero onStart={handleStart} onAdventures={handleAdventures} session={session} />
-            <LevelPreview />
-            <Footer />
-          </>
-        ) : view === 'auth' ? (
-          <div className="min-h-screen pt-32 flex items-center justify-center bg-gradient-to-b from-blue-50 to-white">
-            <Auth />
-          </div>
-        ) : view === 'profile' ? (
-          <Profile session={session} onLogout={handleLogout} />
-        ) : view === 'adventures' ? (
-          <Adventures onStart={handleStart} />
-        ) : view === 'minigames' ? (
-          <MiniGamesHub onBack={() => setView('dashboard')} />
-        ) : (
-          <Dashboard onMinigames={() => setView('minigames')} />
+    <PetProvider>
+      <div className="appContainer">
+        {view !== 'auth' && (
+          <Navbar
+            onStart={handleStart}
+            onHome={handleHome}
+            onProfile={handleProfile}
+            onAdventures={handleAdventures}
+            onLogout={handleLogout}
+            session={session}
+          />
         )}
-      </main>
-    </div>
+        <main>
+          {view === 'landing' ? (
+            <>
+              <Hero onStart={handleStart} onAdventures={handleAdventures} session={session} />
+              <LevelPreview />
+              <Footer />
+            </>
+          ) : view === 'auth' ? (
+            <div className="min-h-screen pt-32 flex items-center justify-center bg-gradient-to-b from-blue-50 to-white">
+              <Auth />
+            </div>
+          ) : view === 'profile' ? (
+            <Profile session={session} onLogout={handleLogout} />
+          ) : view === 'adventures' ? (
+            <Adventures onStart={handleStart} />
+          ) : view === 'minigames' ? (
+            <MiniGamesHub onBack={() => setView('dashboard')} />
+          ) : (
+            <Dashboard onMinigames={() => setView('minigames')} />
+          )}
+        </main>
+      </div>
+    </PetProvider>
   )
 }
 
