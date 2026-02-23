@@ -6,9 +6,10 @@ import { usePet } from '../../context/PetContext';
 
 interface DashboardProps {
     onMinigames: () => void;
+    onLessons?: () => void;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ onMinigames }) => {
+const Dashboard: React.FC<DashboardProps> = ({ onMinigames, onLessons }) => {
     const { mood, message, celebrate, encourage, greet, sleep, wake } = usePet();
     const [pose, setPose] = useState<'front' | 'meditate'>('front');
 
@@ -48,14 +49,18 @@ const Dashboard: React.FC<DashboardProps> = ({ onMinigames }) => {
                         </div>
 
                         <div className="flex-1 flex flex-col gap-4">
-                            <motion.button whileHover={{ scale: 1.02, y: -4 }} whileTap={{ scale: 0.98 }} className="relative overflow-hidden bg-gradient-to-br from-teal-500 to-cyan-500 rounded-[2rem] p-6 text-white text-left shadow-lg shadow-teal-200 group flex-1">
+                            <motion.button 
+                                onClick={onLessons} 
+                                whileHover={{ scale: 1.02, y: -4 }} 
+                                whileTap={{ scale: 0.98 }} 
+                                className="relative overflow-hidden bg-gradient-to-br from-teal-500 to-cyan-500 rounded-[2rem] p-6 text-white text-left shadow-lg shadow-teal-200 group flex-1"
+                            >
                                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform duration-500"><Calendar size={120} /></div>
                                 <div className="relative z-10 h-full flex flex-col">
                                     <div className="bg-white/20 backdrop-blur-md w-14 h-14 rounded-2xl flex items-center justify-center mb-auto shadow-inner border border-white/10"><Calendar size={28} /></div>
                                     <div className="mt-8">
-                                        <h3 className="font-heading font-black text-2xl mb-1">Daily Quiz</h3>
-                                        <p className="text-teal-100 font-medium">Earn double XP today!</p>
-                                        <div className="mt-4 inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm"><span>Starts in 2h</span></div>
+                                        <h3 className="font-heading font-black text-2xl mb-1">Play Lesson 1</h3>
+                                        <p className="text-teal-100 font-medium">Start your language journey!</p>
                                     </div>
                                 </div>
                             </motion.button>

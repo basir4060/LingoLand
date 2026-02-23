@@ -1,0 +1,160 @@
+{
+  "id": "lesson-01",
+  "title": "Greetings & Introductions",
+  "steps": [
+    {
+      "id": "step-1",
+      "type": "listen",
+      "title": "Listen",
+      "itemsByLanguage": {
+        "en": [
+          { "id": "en-hello", "text": "Hello", "ttsText": "Hello", "ttsLang": "en-US" },
+          { "id": "en-hi", "text": "Hi", "ttsText": "Hi", "ttsLang": "en-US" },
+          { "id": "en-whatsname", "text": "What’s your name?", "ttsText": "What's your name?", "ttsLang": "en-US" },
+          { "id": "en-mynameis", "text": "My name is…", "ttsText": "My name is", "ttsLang": "en-US" }
+        ],
+        "es": [
+          { "id": "es-hola-1", "text": "Hola", "ttsText": "Hola", "ttsLang": "es-ES" },
+          { "id": "es-hi", "text": "Hi", "ttsText": "Hi", "ttsLang": "es-ES" },
+          { "id": "es-comote", "text": "¿Cómo te llamas?", "ttsText": "¿Cómo te llamas?", "ttsLang": "es-ES" },
+          { "id": "es-mellamo", "text": "Me llamo…", "ttsText": "Me llamo", "ttsLang": "es-ES" }
+        ],
+        "zh": [
+          { "id": "zh-nihao", "text": "你好", "ttsText": "你好", "ttsLang": "zh-CN", "pinyin": "Nǐ hǎo" },
+          { "id": "zh-hai", "text": "嗨", "ttsText": "嗨", "ttsLang": "zh-CN", "pinyin": "Hāi" },
+          { "id": "zh-nijiao", "text": "你叫什么名字？", "ttsText": "你叫什么名字", "ttsLang": "zh-CN", "pinyin": "Nǐ jiào shénme míngzì?" },
+          { "id": "zh-wojiao", "text": "我叫…", "ttsText": "我叫", "ttsLang": "zh-CN", "pinyin": "Wǒ jiào…" }
+        ]
+      }
+    },
+    {
+      "id": "step-2",
+      "type": "vocab",
+      "title": "Learn the Words",
+      "itemsByLanguage": {
+        "en": [
+          { "id": "en-v-hello", "concept": "Greeting", "text": "Hello", "ttsText": "Hello", "ttsLang": "en-US" },
+          { "id": "en-v-hi", "concept": "Casual greeting", "text": "Hi", "ttsText": "Hi", "ttsLang": "en-US" },
+          { "id": "en-v-whatsname", "concept": "Asking name", "text": "What’s your name?", "ttsText": "What's your name?", "ttsLang": "en-US" },
+          { "id": "en-v-myname", "concept": "Self-introduction", "text": "My name is…", "ttsText": "My name is", "ttsLang": "en-US" }
+        ],
+        "es": [
+          { "id": "es-v-hola", "concept": "Greeting", "text": "Hola", "ttsText": "Hola", "ttsLang": "es-ES" },
+          { "id": "es-v-hi", "concept": "Casual greeting", "text": "Hi", "ttsText": "Hi", "ttsLang": "es-ES" },
+          { "id": "es-v-comote", "concept": "Asking name", "text": "¿Cómo te llamas?", "ttsText": "¿Cómo te llamas?", "ttsLang": "es-ES" },
+          { "id": "es-v-mellamo", "concept": "Self-introduction", "text": "Me llamo…", "ttsText": "Me llamo", "ttsLang": "es-ES" }
+        ],
+        "zh": [
+          { "id": "zh-v-nihao", "concept": "Greeting", "text": "你好", "ttsText": "你好", "ttsLang": "zh-CN", "pinyin": "Nǐ hǎo" },
+          { "id": "zh-v-hai", "concept": "Casual greeting", "text": "嗨", "ttsText": "嗨", "ttsLang": "zh-CN", "pinyin": "Hāi" },
+          { "id": "zh-v-nijiao", "concept": "Asking name", "text": "你叫什么名字？", "ttsText": "你叫什么名字", "ttsLang": "zh-CN", "pinyin": "Nǐ jiào shénme míngzì?" },
+          { "id": "zh-v-wojiao", "concept": "Self-introduction", "text": "我叫…", "ttsText": "我叫", "ttsLang": "zh-CN", "pinyin": "Wǒ jiào…" }
+        ]
+      }
+    },
+    {
+      "id": "step-3",
+      "type": "pronounce",
+      "title": "Say It",
+      "itemsByLanguage": {
+        "en": [
+          { "id": "en-p-hello", "text": "Hello", "ttsText": "Hello", "ttsLang": "en-US" },
+          { "id": "en-p-hi", "text": "Hi", "ttsText": "Hi", "ttsLang": "en-US" },
+          { "id": "en-p-whatsname", "text": "What’s your name?", "ttsText": "What's your name?", "ttsLang": "en-US" },
+          { "id": "en-p-myname", "text": "My name is…", "ttsText": "My name is", "ttsLang": "en-US" }
+        ],
+        "es": [
+          { "id": "es-p-hola", "text": "Hola", "ttsText": "Hola", "ttsLang": "es-ES" },
+          { "id": "es-p-hi", "text": "Hi", "ttsText": "Hi", "ttsLang": "es-ES" },
+          { "id": "es-p-comote", "text": "¿Cómo te llamas?", "ttsText": "¿Cómo te llamas?", "ttsLang": "es-ES" },
+          { "id": "es-p-mellamo", "text": "Me llamo…", "ttsText": "Me llamo", "ttsLang": "es-ES" }
+        ],
+        "zh": [
+          { "id": "zh-p-nihao", "text": "你好", "ttsText": "你好", "ttsLang": "zh-CN", "pinyin": "Nǐ hǎo" },
+          { "id": "zh-p-hai", "text": "嗨", "ttsText": "嗨", "ttsLang": "zh-CN", "pinyin": "Hāi" },
+          { "id": "zh-p-nijiao", "text": "你叫什么名字？", "ttsText": "你叫什么名字", "ttsLang": "zh-CN", "pinyin": "Nǐ jiào shénme míngzì?" },
+          { "id": "zh-p-wojiao", "text": "我叫…", "ttsText": "我叫", "ttsLang": "zh-CN", "pinyin": "Wǒ jiào…" }
+        ]
+      }
+    },
+    {
+      "id": "step-4",
+      "type": "build",
+      "title": "Build the Sentence",
+      "templateByLanguage": {
+        "en": { "template": "My name is {name}.", "ttsLang": "en-US" },
+        "es": { "template": "Me llamo {name}.", "ttsLang": "es-ES" },
+        "zh": { "template": "我叫 {name}.", "ttsLang": "zh-CN" }
+      },
+      "names": ["Alex", "Sam", "Mia", "Leo", "Luke"]
+    },
+{
+  "id": "step-5",
+  "type": "conversation",
+  "title": "Mini Conversation",
+  "scriptByLanguage": {
+    "en": {
+      "app1": "Hello!",
+      "learner1": "Hi!",
+      "app2": "What’s your name?",
+      "learner2": "My name is {name}, and you?",
+      "app3": "My name is Luke."
+    },
+    "es": {
+      "app1": "¡Hola!",
+      "learner1": "¡Hola!",
+      "app2": "¿Cómo te llamas?",
+      "learner2": "Me llamo {name}, ¿y tú?",
+      "app3": "Me llamo Luke."
+    },
+    "zh": {
+      "app1": "你好！",
+      "learner1": "嗨！",
+      "app2": "你叫什么名字？",
+      "learner2": "我叫 {name}，你呢？",
+      "app3": "我叫 Luke。"
+    }
+  }
+},
+    {
+  "id": "step-6",
+  "type": "game",
+  "title": "Connect the Word",
+  "pairsByLanguage": {
+    "en": [
+      { "left": "Hello", "right": "____!" },
+      { "left": "Hi", "right": "____!" },
+      { "left": "name", "right": "My ____ is Alex." },
+      { "left": "My", "right": "____ name is Sam." },
+      { "left": "your", "right": "What’s ____ name?" },
+      { "left": "What’s", "right": "____ your name?" },
+      { "left": "meet", "right": "Nice to ____ you." },
+      { "left": "Nice", "right": "____ to meet you." }
+    ],
+    "es": [
+      { "left": "¡Hola!", "right": "____" },
+      { "left": "Hi", "right": "____" },
+      { "left": "Me", "right": "____ llamo Alex." },
+      { "left": "llamo", "right": "Me ____ Alex." },
+      { "left": "¿Cómo", "right": "____ te llamas?" },
+      { "left": "te", "right": "¿Cómo ____ llamas?" },
+      { "left": "Mucho", "right": "____ gusto." },
+      { "left": "gusto", "right": "Mucho ____." }
+    ],
+    "zh": [
+      { "left": "你好", "right": "____！" },
+      { "left": "嗨", "right": "____！" },
+      { "left": "我叫", "right": "____ Alex。" },
+      { "left": "你", "right": "____ 叫什么名字？" },
+      { "left": "叫什么", "right": "你 ____ 名字？" },
+      { "left": "名字", "right": "你叫什么 ____？" },
+      { "left": "很高兴", "right": "____ 认识你。" },
+      { "left": "认识", "right": "很高兴 ____ 你。" }
+    ]
+  }
+}
+  ]}
+
+
+
+  

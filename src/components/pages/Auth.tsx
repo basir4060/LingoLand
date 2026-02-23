@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { supabase } from '../../lib/supabase';
-import { Mail, Lock, Loader2, AlertCircle } from 'lucide-react';
+import { Mail, Lock, Loader2, AlertCircle, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Auth: React.FC = () => {
+interface AuthProps {
+    onBack?: () => void;
+}
+
+const Auth: React.FC<AuthProps> = ({ onBack }) => {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -76,6 +80,15 @@ const Auth: React.FC = () => {
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-100 rounded-full blur-3xl -ml-16 -mb-16 -z-0"></div>
 
                 <div className="relative z-10 text-center mb-8">
+                    {onBack && (
+                        <button
+                            onClick={onBack}
+                            type="button"
+                            className="absolute -left-2 -top-2 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                        >
+                            <ArrowLeft size={24} />
+                        </button>
+                    )}
                     <h2 className="font-heading font-bold text-3xl text-gray-800 mb-2">
                         {isSignUp ? 'Join the Adventure' : 'Welcome Back!'}
                     </h2>
